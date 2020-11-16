@@ -11,7 +11,7 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "ngx-build-plus:browser",
           "options": {
             "outputPath": "dist/app-shell",
             "index": "projects/app-shell/src/index.html",
@@ -26,7 +26,8 @@
             "styles": [
               "projects/app-shell/src/styles.css"
             ],
-            "scripts": []
+            "scripts": [],
+            "extraWebpackConfig": "projects/shell/webpack.config.js"
           },
           "configurations": {
             "production": {
@@ -59,13 +60,14 @@
           }
         },
         "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
+          "builder": "ngx-build-plus:dev-server",
           "options": {
             "browserTarget": "app-shell:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "app-shell:build:production"
+              "browserTarget": "app-shell:build:production",
+              "extraWebpackConfig": "projects/shell/webpack.prod.config.js"
             }
           }
         },
@@ -76,7 +78,7 @@
           }
         },
         "test": {
-          "builder": "@angular-devkit/build-angular:karma",
+          "builder": "ngx-build-plus:karma",
           "options": {
             "main": "projects/app-shell/src/test.ts",
             "polyfills": "projects/app-shell/src/polyfills.ts",
@@ -89,7 +91,8 @@
             "styles": [
               "projects/app-shell/src/styles.css"
             ],
-            "scripts": []
+            "scripts": [],
+            "extraWebpackConfig": "projects/shell/webpack.config.js"
           }
         },
         "lint": {
@@ -118,7 +121,8 @@
           }
         }
       }
-    }},
+    }
+  },
   "cli": {
     "analytics": "5f4056a6-4d39-45ce-beb4-d4446852101f"
   },
