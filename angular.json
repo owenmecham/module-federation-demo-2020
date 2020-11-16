@@ -2,5 +2,125 @@
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "newProjectRoot": "projects",
-  "projects": {}
+  "projects": {
+    "app-shell": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "projects/app-shell",
+      "sourceRoot": "projects/app-shell/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/app-shell",
+            "index": "projects/app-shell/src/index.html",
+            "main": "projects/app-shell/src/main.ts",
+            "polyfills": "projects/app-shell/src/polyfills.ts",
+            "tsConfig": "projects/app-shell/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "projects/app-shell/src/favicon.ico",
+              "projects/app-shell/src/assets"
+            ],
+            "styles": [
+              "projects/app-shell/src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/app-shell/src/environments/environment.ts",
+                  "with": "projects/app-shell/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "app-shell:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "app-shell:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "app-shell:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/app-shell/src/test.ts",
+            "polyfills": "projects/app-shell/src/polyfills.ts",
+            "tsConfig": "projects/app-shell/tsconfig.spec.json",
+            "karmaConfig": "projects/app-shell/karma.conf.js",
+            "assets": [
+              "projects/app-shell/src/favicon.ico",
+              "projects/app-shell/src/assets"
+            ],
+            "styles": [
+              "projects/app-shell/src/styles.css"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/app-shell/tsconfig.app.json",
+              "projects/app-shell/tsconfig.spec.json",
+              "projects/app-shell/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/app-shell/e2e/protractor.conf.js",
+            "devServerTarget": "app-shell:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "app-shell:serve:production"
+            }
+          }
+        }
+      }
+    }},
+  "cli": {
+    "analytics": "5f4056a6-4d39-45ce-beb4-d4446852101f"
+  },
+  "defaultProject": "app-shell"
 }

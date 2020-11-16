@@ -3,13 +3,14 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
+    "start:app-shell": "ng serve app-shell  -o --port 5000",
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
-    "lint": "ng lint"
+    "lint": "ng lint",
+    "e2e": "ng e2e"
   },
   "private": true,
-
   "resolutions": {
     "webpack": "5.0.0"
   },
