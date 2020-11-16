@@ -27,7 +27,7 @@
               "projects/app-shell/src/styles.css"
             ],
             "scripts": [],
-            "extraWebpackConfig": "projects/shell/webpack.config.js"
+            "extraWebpackConfig": "projects/app-shell/webpack.config.js"
           },
           "configurations": {
             "production": {
@@ -55,19 +55,22 @@
                   "maximumWarning": "6kb",
                   "maximumError": "10kb"
                 }
-              ]
+              ],
+              "extraWebpackConfig": "projects/app-shell/webpack.prod.config.js"
             }
           }
         },
         "serve": {
           "builder": "ngx-build-plus:dev-server",
           "options": {
-            "browserTarget": "app-shell:build"
+            "browserTarget": "app-shell:build",
+            "extraWebpackConfig": "projects/app-shell/webpack.config.js",
+            "port": 5000
           },
           "configurations": {
             "production": {
               "browserTarget": "app-shell:build:production",
-              "extraWebpackConfig": "projects/shell/webpack.prod.config.js"
+              "extraWebpackConfig": "projects/app-shell/webpack.prod.config.js"
             }
           }
         },
@@ -92,7 +95,7 @@
               "projects/app-shell/src/styles.css"
             ],
             "scripts": [],
-            "extraWebpackConfig": "projects/shell/webpack.config.js"
+            "extraWebpackConfig": "projects/app-shell/webpack.config.js"
           }
         },
         "lint": {
@@ -130,7 +133,7 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "ngx-build-plus:browser",
           "options": {
             "outputPath": "dist/cleaners",
             "index": "projects/cleaners/src/index.html",
@@ -145,7 +148,8 @@
             "styles": [
               "projects/cleaners/src/styles.css"
             ],
-            "scripts": []
+            "scripts": [],
+            "extraWebpackConfig": "projects/cleaners/webpack.config.js"
           },
           "configurations": {
             "production": {
@@ -173,18 +177,22 @@
                   "maximumWarning": "6kb",
                   "maximumError": "10kb"
                 }
-              ]
+              ],
+              "extraWebpackConfig": "projects/cleaners/webpack.prod.config.js"
             }
           }
         },
         "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
+          "builder": "ngx-build-plus:dev-server",
           "options": {
-            "browserTarget": "cleaners:build"
+            "browserTarget": "cleaners:build",
+            "extraWebpackConfig": "projects/cleaners/webpack.config.js",
+            "port": 3000
           },
           "configurations": {
             "production": {
-              "browserTarget": "cleaners:build:production"
+              "browserTarget": "cleaners:build:production",
+              "extraWebpackConfig": "projects/cleaners/webpack.prod.config.js"
             }
           }
         },
@@ -195,7 +203,7 @@
           }
         },
         "test": {
-          "builder": "@angular-devkit/build-angular:karma",
+          "builder": "ngx-build-plus:karma",
           "options": {
             "main": "projects/cleaners/src/test.ts",
             "polyfills": "projects/cleaners/src/polyfills.ts",
@@ -208,7 +216,8 @@
             "styles": [
               "projects/cleaners/src/styles.css"
             ],
-            "scripts": []
+            "scripts": [],
+            "extraWebpackConfig": "projects/cleaners/webpack.config.js"
           }
         },
         "lint": {
@@ -240,7 +249,8 @@
     }
   },
   "cli": {
+    "packageManager": "yarn",
     "analytics": "5f4056a6-4d39-45ce-beb4-d4446852101f"
   },
-  "defaultProject": "app-shell"
+  "defaultProject": "cleaners"
 }

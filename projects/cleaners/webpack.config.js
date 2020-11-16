@@ -2,8 +2,8 @@ const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPl
 
 module.exports = {
   output: {
-    publicPath: "http://localhost:5000/",
-    uniqueName: "shell"
+    publicPath: "http://localhost:3000/",
+    uniqueName: "cleaners"
   },
   optimization: {
     // Only needed to bypass a temporary bug
@@ -11,9 +11,15 @@ module.exports = {
   },
   plugins: [
     new ModuleFederationPlugin({
-      remotes: {
-        'cleaners': "cleaners@http://localhost:3000/remoteEntry.js"
+
+      // For remotes (please adjust)
+      name: "cleaners",
+      library: { type: "var", name: "cleaners" },
+      filename: "remoteEntry.js",
+      exposes: {
+        './Module': './projects/cleaners/src/app/cleaners/cleaners.module.ts',
       },
+
       shared: ["@angular/core", "@angular/common", "@angular/router"]
     })
   ],

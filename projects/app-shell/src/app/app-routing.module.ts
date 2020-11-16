@@ -8,6 +8,10 @@ const routes: Routes = [
     component: HomeComponent,
     pathMatch: 'full',
   },
+  {
+    path: 'cleaners',
+    loadChildren: () => import('cleaners/Module').then((m) => m.CleanersModule),
+  },
 ];
 
 @NgModule({
