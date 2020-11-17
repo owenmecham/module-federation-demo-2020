@@ -5,6 +5,7 @@
     "ng": "ng",
     "start:app-shell": "ng serve app-shell -o --port 5000",
     "start:cleaners": "ng serve cleaners -o --port 3000",
+    "start:simpleform": "ng serve simpleform -o --port 3050",
     "build:app-shell": "ng build app-shell --prod",
     "build:cleaners": "ng build cleaners --prod",
     "serve:dist": "concurrently \"serve dist/app-shell -l 5000 -s\" \"serve dist/cleaners -l 3000 -s\" ",

@@ -246,6 +246,129 @@
           }
         }
       }
+    },
+    "simpleform": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "projects/simpleform",
+      "sourceRoot": "projects/simpleform/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "ngx-build-plus:browser",
+          "options": {
+            "outputPath": "dist/simpleform",
+            "index": "projects/simpleform/src/index.html",
+            "main": "projects/simpleform/src/main.ts",
+            "polyfills": "projects/simpleform/src/polyfills.ts",
+            "tsConfig": "projects/simpleform/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "projects/simpleform/src/favicon.ico",
+              "projects/simpleform/src/assets"
+            ],
+            "styles": [
+              "projects/simpleform/src/styles.css"
+            ],
+            "scripts": [],
+            "extraWebpackConfig": "projects/simpleform/webpack.config.js"
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/simpleform/src/environments/environment.ts",
+                  "with": "projects/simpleform/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ],
+            "extraWebpackConfig": "projects/simpleform/webpack.prod.config.js"
+            }
+          }
+        },
+        "serve": {
+          "builder": "ngx-build-plus:dev-server",
+          "options": {
+            "browserTarget": "simpleform:build",
+            "extraWebpackConfig": "projects/simpleform/webpack.config.js",
+            "port": 3050
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "simpleform:build:production",
+
+            "extraWebpackConfig": "projects/simpleform/webpack.prod.config.js"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "simpleform:build"
+          }
+        },
+        "test": {
+          "builder": "ngx-build-plus:karma",
+          "options": {
+            "main": "projects/simpleform/src/test.ts",
+            "polyfills": "projects/simpleform/src/polyfills.ts",
+            "tsConfig": "projects/simpleform/tsconfig.spec.json",
+            "karmaConfig": "projects/simpleform/karma.conf.js",
+            "assets": [
+              "projects/simpleform/src/favicon.ico",
+              "projects/simpleform/src/assets"
+            ],
+            "styles": [
+              "projects/simpleform/src/styles.css"
+            ],
+            "scripts": [],
+            "extraWebpackConfig": "projects/simpleform/webpack.config.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/simpleform/tsconfig.app.json",
+              "projects/simpleform/tsconfig.spec.json",
+              "projects/simpleform/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/simpleform/e2e/protractor.conf.js",
+            "devServerTarget": "simpleform:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "simpleform:serve:production"
+            }
+          }
+        }
+      }
     }
   },
   "cli": {

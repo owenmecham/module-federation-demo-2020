@@ -19,7 +19,8 @@ module.exports = {
     // https://webpack.js.org/concepts/module-federation/#modulefederationplugin-high-level
     new ModuleFederationPlugin({
       remotes: {
-        'cleaners': "cleaners@http://localhost:3000/remoteEntry.js"
+        'cleaners': "cleaners@http://localhost:3000/remoteEntry.js",
+        'simpleform': "simpleform@http://localhost:3050/remoteEntry.js"
       },
       shared: ["@angular/core", "@angular/common", "@angular/router"]
     })
