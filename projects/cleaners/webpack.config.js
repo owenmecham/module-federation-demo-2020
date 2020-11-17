@@ -12,7 +12,7 @@ module.exports = {
   plugins: [
     new ModuleFederationPlugin({
 
-      // For remotes (please adjust)
+      // Remotes configuration
       name: "cleaners",
       library: { type: "var", name: "cleaners" },
       filename: "remoteEntry.js",

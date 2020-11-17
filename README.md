@@ -1,27 +1,35 @@
-# FederationJunk
+# Example for @angular-architects/module-federation
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.1.
+This examples loads a microfrontend into a shell:
 
-## Development server
+![Microfrontend Loaded into Shell](./demo.png)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Important Files
 
-## Code scaffolding
+Have a particular look at the following files:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- `readme.md`: Shows how to install dependencies and how to start the example
+- `projects\cleaners\webpack.config.js`: Microfrontend config
+- `projects\app-shell\webpack.config.js`: Shell config
+- `projects\app-shell\src\app\app.routes.ts`: Lazy route for microfrontend
+- `projects\shell\src\decl.d.ts`: Typing for mapped Url pointing to microfrontend
 
-## Build
+## Installation and Usage
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+- Install packages: `yarn` (!)\*
+- Start Micro Frontend (remote): `ng serve cleaners -o`
+- Start Shell (host): `ng serve app-shell -o`
+- Make sure `cleaners` is started before `app-shell` is loaded into the browser
+- Note: (This is important because the app-shell does an initial call to the cleaners MicroFrontend during the app-shell bootstrap)
+- Use the hyperlink `List Cleaners` in the `app-shell` to load `cleaners`
 
-## Running unit tests
+\* Please note, you **must** use **yarn** during the beta phase of CLI 11 b/c it allows to override dependencies to force the CLI into webpack 5.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## More Details on Module Federation from Manfred Steyer
 
-## Running end-to-end tests
+Have a look at this [article series about Module Federation](https://www.angulararchitects.io/aktuelles/the-microfrontend-revolution-part-2-module-federation-with-angular/)
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+## Angular Trainings, Workshops, and Consulting
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+- [Angular Trainings and Workshops](https://www.angulararchitects.io/en/angular-workshops/)
+- [Angular Consulting](https://www.angulararchitects.io/en/consulting/)
