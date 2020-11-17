@@ -1,4 +1,4 @@
-# Example for @angular-architects/module-federation
+# Example for @owenmecham/module-federation-demo-2020
 
 This examples loads a microfrontend into a shell:
 
@@ -26,6 +26,8 @@ Have a particular look at the following files:
 \* Please note, you **must** use **yarn** during the beta phase of CLI 11 b/c it allows to override dependencies to force the CLI into webpack 5.
 
 ## More Details on Module Federation from Manfred Steyer
+
+## @angular-architects/module-federation
 
 Have a look at this [article series about Module Federation](https://www.angulararchitects.io/aktuelles/the-microfrontend-revolution-part-2-module-federation-with-angular/)
 
