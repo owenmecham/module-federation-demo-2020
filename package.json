@@ -21,7 +21,7 @@
   "dependencies": {
     "@angular-architects/module-federation": "^0.9.3",
     "@angular/animations": "~11.0.0-next.4",
-    "@angular/common": "~11.0.0-next.4",
+    "@angular/common": "~19.2.16",
     "@angular/compiler": "~11.0.0-next.4",
     "@angular/core": "~11.0.0-next.4",
     "@angular/forms": "~11.0.0-next.4",
